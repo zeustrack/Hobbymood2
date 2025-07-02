@@ -4,7 +4,7 @@ from fastapi.responses import FileResponse
 import json
 import os
 from pathlib import Path
-from websocket_manager import websocket_manager
+from Hobbymood2.backend.websocket_manager import websocket_manager
 
 app = FastAPI(title="Hobbymood OBS Controller", version="1.0.0")
 
