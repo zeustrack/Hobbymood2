@@ -195,6 +195,11 @@ class OverlayController {
         
         assetDisplay.appendChild(img);
         this.activeAssets[asset_type] = img;
+
+        // Forcer le reflow et relancer l'animation fade-in
+        img.classList.remove('fade-in');
+        void img.offsetWidth;
+        img.classList.add('fade-in');
     }
 
     createAndDisplayAssetImmediate(asset_path, asset_type) {
