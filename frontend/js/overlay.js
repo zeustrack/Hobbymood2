@@ -196,10 +196,13 @@ class OverlayController {
         assetDisplay.appendChild(img);
         this.activeAssets[asset_type] = img;
 
-        // Forcer le reflow et relancer l'animation fade-in
+        // Retirer la classe si elle existe déjà
         img.classList.remove('fade-in');
-        void img.offsetWidth;
-        img.classList.add('fade-in');
+
+        // Utiliser requestAnimationFrame pour garantir l'ajout au DOM avant d'ajouter la classe
+        requestAnimationFrame(() => {
+            img.classList.add('fade-in');
+        });
     }
 
     createAndDisplayAssetImmediate(asset_path, asset_type) {
