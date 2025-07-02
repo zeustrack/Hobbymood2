@@ -204,7 +204,7 @@ class OverlayController {
         
         img.src = asset_path;
         img.alt = `${asset_type} asset`;
-        img.className = `asset-image asset-${asset_type}`; // Pas d'animation
+        img.className = `asset-image asset-${asset_type} fade-in`;
         img.dataset.assetType = asset_type;
         
         console.log(`Affichage immédiat: ${asset_type} - ${asset_path}`);
