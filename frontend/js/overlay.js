@@ -204,7 +204,11 @@ class OverlayController {
         
         img.src = asset_path;
         img.alt = `${asset_type} asset`;
-        img.className = `asset-image asset-${asset_type} fade-in`;
+        if (asset_type === 'answer') {
+            img.className = `asset-image asset-${asset_type} reveal`;
+        } else {
+            img.className = `asset-image asset-${asset_type} fade-in`;
+        }
         img.dataset.assetType = asset_type;
         
         console.log(`Affichage immédiat: ${asset_type} - ${asset_path}`);
@@ -315,17 +319,18 @@ class OverlayController {
         const asset = this.activeAssets[assetType];
         if (asset) {
             console.log(`Suppression immédiate asset: ${assetType}`);
-            
-            // Supprimer immédiatement de la liste des assets actifs
             this.activeAssets[assetType] = null;
-            
-            // Supprimer immédiatement du DOM sans animation
+            if (assetType === 'question') {
+                asset.classList.add('fade-out-quick');
+                setTimeout(() => {
+                    if (asset.parentNode) asset.parentNode.removeChild(asset);
+                }, 150);
+                return;
+            }
             if (asset && asset.parentNode) {
                 asset.parentNode.removeChild(asset);
                 console.log(`Asset ${assetType} supprimé immédiatement du DOM`);
             }
-        } else {
-            console.log(`Aucun asset ${assetType} à supprimer`);
         }
         
         // Nettoyer aussi tous les éléments du DOM avec le même assetType
