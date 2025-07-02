@@ -138,13 +138,19 @@ class OverlayController {
             // Supprimer seulement la réponse précédente sans animation
             this.clearAssetTypeImmediate('answer');
             
-            // Afficher d'abord la réponse sans animation
-            this.createAndDisplayAssetImmediate(asset_path, asset_type);
-            
-            // Supprimer la question après un court délai pour éviter le flash
-            setTimeout(() => {
-                this.clearAssetTypeImmediate('question');
-            }, 50);
+            // Afficher la réponse et attendre la fin de l'animation avant de supprimer la question
+            const img = this.createAndDisplayAssetImmediate(asset_path, asset_type);
+
+            if (img) {
+                img.addEventListener('animationend', () => {
+                    this.clearAssetTypeImmediate('question');
+                });
+            } else {
+                // Sécurité : si pas d'image, fallback après 400ms
+                setTimeout(() => {
+                    this.clearAssetTypeImmediate('question');
+                }, 400);
+            }
             return;
         } else if (asset_type === 'logo' || asset_type === 'presentation') {
             // Les logos et présentations peuvent coexister avec les questions
@@ -214,6 +220,7 @@ class OverlayController {
         
         assetDisplay.appendChild(img);
         this.activeAssets[asset_type] = img;
+        return img;
     }
 
     clearOverlay(data = {}) {

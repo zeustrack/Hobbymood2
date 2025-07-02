@@ -37,7 +37,7 @@ GAMES_CONFIG = {
     },
     "jeu3": {
         "name": "Qui veut gagner des millions d'impacts",
-        "questions_count": 10,
+        "questions_count": 11,
         "assets": {
             "logo": "/assets/jeu3/logo.png",
             "presentation": "/assets/jeu3/presentation.png"
