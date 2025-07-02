@@ -1,6 +1,8 @@
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException, Request, Form
+from fastapi.responses import FileResponse, RedirectResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.templating import Jinja2Templates
+from starlette.middleware.sessions import SessionMiddleware
 import json
 import os
 from pathlib import Path
@@ -8,10 +10,15 @@ from backend.websocket_manager import websocket_manager
 
 app = FastAPI(title="Hobbymood OBS Controller", version="1.0.0")
 
+# Ajout du middleware de session
+app.add_middleware(SessionMiddleware, secret_key="supersecretkey123")
+
 # Configuration des dossiers
 BASE_DIR = Path(__file__).parent.parent
 ASSETS_DIR = BASE_DIR / "assets"
 FRONTEND_DIR = BASE_DIR / "frontend"
+TEMPLATES_DIR = BASE_DIR / "frontend"
+templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 
 # Monter les fichiers statiques
 app.mount("/assets", StaticFiles(directory=str(ASSETS_DIR)), name="assets")
@@ -55,9 +62,28 @@ async def overlay():
     """Page overlay principale pour OBS"""
     return FileResponse(str(FRONTEND_DIR / "overlay.html"))
 
+@app.get("/login")
+def login_form(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request, "error": None})
+
+@app.post("/login")
+def login(request: Request, username: str = Form(...), password: str = Form(...)):
+    if username == "admin" and password == "admin":
+        request.session["user"] = "admin"
+        return RedirectResponse("/admin", status_code=302)
+    else:
+        return templates.TemplateResponse("login.html", {"request": request, "error": "Identifiants invalides"})
+
+@app.get("/logout")
+def logout(request: Request):
+    request.session.clear()
+    return RedirectResponse("/login", status_code=302)
+
 @app.get("/admin")
-async def admin():
-    """Interface d'administration"""
+def admin(request: Request):
+    user = request.session.get("user")
+    if user != "admin":
+        return RedirectResponse("/login", status_code=302)
     return FileResponse(str(FRONTEND_DIR / "admin.html"))
 
 @app.get("/scores")
