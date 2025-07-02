@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbymood Admin - Version Simplifiée</title>
+    <link rel="stylesheet" href="/frontend/css/admin.css">
+    <style>
+        .demo-notice {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .asset-preview {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin: 10px 0;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .asset-preview iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="admin-container">
+        <!-- Header -->
+        <header id="admin-header">
+            <h1>🎮 Hobbymood OBS Controller</h1>
+            <div class="demo-notice">
+                🚀 Version Simplifiée - Fonctionne immédiatement !
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav id="admin-nav">
+            <button class="nav-btn active" data-section="games">Jeux</button>
+            <button class="nav-btn" data-section="scores">Scores</button>
+            <button class="nav-btn" data-section="overlay">Overlay</button>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main id="admin-content">
+            <!-- Section Jeux -->
+            <section id="games-section" class="content-section active">
+                <div class="games-grid">
+                    <!-- Jeu 1 -->
+                    <div class="game-card" data-game="jeu1">
+                        <div class="game-header">
+                            <h3>🏆 Mon entreprise en or</h3>
+                            <span class="game-subtitle">8 questions</span>
+                        </div>
+                        
+                        <div class="game-controls">
+                            <div class="control-group">
+                                <h4>Assets principaux</h4>
+                                <button class="control-btn" onclick="showAsset('jeu1', 'logo')">
+                                    Afficher Logo
+                                </button>
+                                <button class="control-btn" onclick="showAsset('jeu1', 'presentation')">
+                                    Afficher Présentation
+                                </button>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Questions</h4>
+                                <div class="questions-grid">
+                                    <button class="question-btn" onclick="showQuestion('jeu1', 1)">Q1</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu1', 2)">Q2</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu1', 3)">Q3</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu1', 4)">Q4</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu1', 5)">Q5</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu1', 6)">Q6</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu1', 7)">Q7</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu1', 8)">Q8</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jeu 2 -->
+                    <div class="game-card" data-game="jeu2">
+                        <div class="game-header">
+                            <h3>🌱 Les défis du père fou de la RSE</h3>
+                            <span class="game-subtitle">9 questions</span>
+                        </div>
+                        
+                        <div class="game-controls">
+                            <div class="control-group">
+                                <h4>Assets principaux</h4>
+                                <button class="control-btn" onclick="showAsset('jeu2', 'logo')">
+                                    Afficher Logo
+                                </button>
+                                <button class="control-btn" onclick="showAsset('jeu2', 'presentation')">
+                                    Afficher Présentation
+                                </button>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Questions</h4>
+                                <div class="questions-grid">
+                                    <button class="question-btn" onclick="showQuestion('jeu2', 1)">Q1</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu2', 2)">Q2</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu2', 3)">Q3</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu2', 4)">Q4</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu2', 5)">Q5</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu2', 6)">Q6</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu2', 7)">Q7</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu2', 8)">Q8</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu2', 9)">Q9</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jeu 3 -->
+                    <div class="game-card" data-game="jeu3">
+                        <div class="game-header">
+                            <h3>💰 Qui veut gagner des millions d'impacts</h3>
+                            <span class="game-subtitle">10 questions</span>
+                        </div>
+                        
+                        <div class="game-controls">
+                            <div class="control-group">
+                                <h4>Assets principaux</h4>
+                                <button class="control-btn" onclick="showAsset('jeu3', 'logo')">
+                                    Afficher Logo
+                                </button>
+                                <button class="control-btn" onclick="showAsset('jeu3', 'presentation')">
+                                    Afficher Présentation
+                                </button>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Questions</h4>
+                                <div class="questions-grid">
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 1)">Q1</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 2)">Q2</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 3)">Q3</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 4)">Q4</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 5)">Q5</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 6)">Q6</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 7)">Q7</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 8)">Q8</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 9)">Q9</button>
+                                    <button class="question-btn" onclick="showQuestion('jeu3', 10)">Q10</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Scores -->
+            <section id="scores-section" class="content-section">
+                <div class="scores-container">
+                    <div class="scores-header">
+                        <h2>📊 Gestion des Scores</h2>
+                        <div class="scores-controls">
+                            <button class="control-btn primary" onclick="showScores()">
+                                Afficher Scores
+                            </button>
+                            <button class="control-btn secondary" onclick="hideScores()">
+                                Masquer Scores
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="teams-grid">
+                        <div class="team-card" data-team="team1">
+                            <h4>Équipe 1</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field" onchange="updateScore('team1', this.value)">
+                                <button class="score-btn" onclick="incrementScore('team1')">+</button>
+                                <button class="score-btn" onclick="decrementScore('team1')">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team2">
+                            <h4>Équipe 2</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field" onchange="updateScore('team2', this.value)">
+                                <button class="score-btn" onclick="incrementScore('team2')">+</button>
+                                <button class="score-btn" onclick="decrementScore('team2')">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team3">
+                            <h4>Équipe 3</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field" onchange="updateScore('team3', this.value)">
+                                <button class="score-btn" onclick="incrementScore('team3')">+</button>
+                                <button class="score-btn" onclick="decrementScore('team3')">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team4">
+                            <h4>Équipe 4</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field" onchange="updateScore('team4', this.value)">
+                                <button class="score-btn" onclick="incrementScore('team4')">+</button>
+                                <button class="score-btn" onclick="decrementScore('team4')">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team5">
+                            <h4>Équipe 5</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field" onchange="updateScore('team5', this.value)">
+                                <button class="score-btn" onclick="incrementScore('team5')">+</button>
+                                <button class="score-btn" onclick="decrementScore('team5')">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team6">
+                            <h4>Équipe 6</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field" onchange="updateScore('team6', this.value)">
+                                <button class="score-btn" onclick="incrementScore('team6')">+</button>
+                                <button class="score-btn" onclick="decrementScore('team6')">-</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Overlay -->
+            <section id="overlay-section" class="content-section">
+                <div class="overlay-container">
+                    <div class="overlay-header">
+                        <h2>🎬 Contrôle Overlay</h2>
+                    </div>
+                    
+                    <div class="overlay-controls">
+                        <div class="control-group">
+                            <h4>Actions rapides</h4>
+                            <button class="control-btn danger" onclick="clearOverlay()">
+                                Effacer Tout
+                            </button>
+                        </div>
+                        
+                        <div class="control-group">
+                            <h4>Liens OBS</h4>
+                            <div class="obs-links">
+                                <button class="obs-link" onclick="getOverlayWindow()">
+                                    📺 Ouvrir Overlay Principal
+                                </button>
+                                <a href="/scores" target="_blank" class="obs-link">
+                                    📊 Page Scores
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <h4>Prévisualisation</h4>
+                            <div class="asset-preview">
+                                <iframe id="preview-frame" src="/overlay"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Navigation
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const sectionName = btn.dataset.section;
+                
+                // Mettre à jour la navigation
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Mettre à jour le contenu
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(`${sectionName}-section`).classList.add('active');
+            });
+        });
+
+        // Variables globales
+        let overlayWindow = null;
+
+        // Fonction pour ouvrir/contrôler l'overlay
+        function getOverlayWindow() {
+            if (!overlayWindow || overlayWindow.closed) {
+                overlayWindow = window.open('/overlay', 'overlay', 'width=1920,height=1080');
+                // Attendre que l'overlay soit chargé
+                setTimeout(() => {
+                    if (overlayWindow && overlayWindow.hobbymoodOverlay) {
+                        console.log('Overlay prêt');
+                    }
+                }, 1000);
+            }
+            return overlayWindow;
+        }
+
+        // Fonctions pour afficher les assets
+        function showAsset(game, assetType) {
+            const overlayFrame = document.getElementById('preview-frame');
+            const assetPath = `/assets/${game}/${assetType}.html`;
+            overlayFrame.src = assetPath;
+            
+            // Contrôler l'overlay principal
+            const overlay = getOverlayWindow();
+            if (overlay && overlay.hobbymoodOverlay) {
+                overlay.hobbymoodOverlay.loadAsset(assetPath);
+            } else {
+                // Fallback : ouvrir directement l'asset
+                window.open(assetPath, '_blank');
+            }
+        }
+
+        function showQuestion(game, questionNumber) {
+            const overlayFrame = document.getElementById('preview-frame');
+            const assetPath = `/assets/${game}/questions/Q${questionNumber}.html`;
+            overlayFrame.src = assetPath;
+            
+            // Contrôler l'overlay principal
+            const overlay = getOverlayWindow();
+            if (overlay && overlay.hobbymoodOverlay) {
+                overlay.hobbymoodOverlay.loadAsset(assetPath);
+            } else {
+                // Fallback : ouvrir directement l'asset
+                window.open(assetPath, '_blank');
+            }
+        }
+
+        function showScores() {
+            const overlayFrame = document.getElementById('preview-frame');
+            overlayFrame.src = `/scores`;
+            
+            // Ouvrir la page scores dans un nouvel onglet
+            window.open(`/scores`, '_blank');
+        }
+
+        function hideScores() {
+            const overlayFrame = document.getElementById('preview-frame');
+            overlayFrame.src = `/overlay`;
+        }
+
+        function clearOverlay() {
+            const overlayFrame = document.getElementById('preview-frame');
+            overlayFrame.src = `/overlay`;
+            
+            // Effacer l'overlay principal
+            const overlay = getOverlayWindow();
+            if (overlay && overlay.hobbymoodOverlay) {
+                overlay.hobbymoodOverlay.clearOverlay();
+            }
+        }
+
+        // Gestion des scores
+        function updateScore(team, score) {
+            console.log(`Score ${team} mis à jour: ${score}`);
+            // Ici vous pourriez ajouter la logique pour sauvegarder les scores
+        }
+
+        function incrementScore(team) {
+            const field = document.querySelector(`[data-team="${team}"] .score-field`);
+            const currentScore = parseInt(field.value) || 0;
+            field.value = currentScore + 1;
+            updateScore(team, field.value);
+        }
+
+        function decrementScore(team) {
+            const field = document.querySelector(`[data-team="${team}"] .score-field`);
+            const currentScore = parseInt(field.value) || 0;
+            field.value = Math.max(0, currentScore - 1);
+            updateScore(team, field.value);
+        }
+
+        // Raccourcis clavier
+        document.addEventListener('keydown', (event) => {
+            if (event.key >= '1' && event.key <= '3') {
+                const sections = ['games', 'scores', 'overlay'];
+                const sectionIndex = parseInt(event.key) - 1;
+                if (sections[sectionIndex]) {
+                    document.querySelector(`[data-section="${sections[sectionIndex]}"]`).click();
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

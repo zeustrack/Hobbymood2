@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbymood Admin - PythonAnywhere</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <h1>🎮 Hobbymood Admin Panel</h1>
+            <p>Contrôle des overlays et scores - Version PythonAnywhere</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="admin-nav">
+            <button class="nav-btn active" data-section="games">🎮 Jeux</button>
+            <button class="nav-btn" data-section="scores">📊 Scores</button>
+            <button class="nav-btn" data-section="overlay">📺 Overlay</button>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="admin-content">
+            <!-- Section Jeux -->
+            <section id="games-section" class="content-section active">
+                <div class="section-header">
+                    <h2>🎮 Gestion des Jeux</h2>
+                    <div class="section-controls">
+                        <button class="control-btn danger" id="clear-all">
+                            🗑️ Effacer Tout
+                        </button>
+                        <button class="control-btn secondary" id="clear-question-answer">
+                            ❌ Effacer Q/R
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="games-container">
+                    <!-- Les jeux seront générés dynamiquement -->
+                </div>
+            </section>
+
+            <!-- Section Scores -->
+            <section id="scores-section" class="content-section">
+                <div class="scores-header">
+                    <h2>📊 Gestion des Scores</h2>
+                    <div class="scores-controls">
+                        <button class="control-btn danger" id="reset-points">
+                            🔄 Reset Points
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="teams-grid">
+                    <div class="team-card" data-team="team1">
+                        <h4>École de la 2nd chance Nîmes</h4>
+                        <div class="score-input">
+                            <input type="number" min="0" value="0" class="score-field">
+                            <button class="score-btn" data-action="increment">+</button>
+                            <button class="score-btn" data-action="decrement">-</button>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card" data-team="team2">
+                        <h4>Les Roses du Gard</h4>
+                        <div class="score-input">
+                            <input type="number" min="0" value="0" class="score-field">
+                            <button class="score-btn" data-action="increment">+</button>
+                            <button class="score-btn" data-action="decrement">-</button>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card" data-team="team3">
+                        <h4>À Vélo Sans Âge</h4>
+                        <div class="score-input">
+                            <input type="number" min="0" value="0" class="score-field">
+                            <button class="score-btn" data-action="increment">+</button>
+                            <button class="score-btn" data-action="decrement">-</button>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card" data-team="team4">
+                        <h4>Cancertons-nous</h4>
+                        <div class="score-input">
+                            <input type="number" min="0" value="0" class="score-field">
+                            <button class="score-btn" data-action="increment">+</button>
+                            <button class="score-btn" data-action="decrement">-</button>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card" data-team="team5">
+                        <h4>Charlotte Memory</h4>
+                        <div class="score-input">
+                            <input type="number" min="0" value="0" class="score-field">
+                            <button class="score-btn" data-action="increment">+</button>
+                            <button class="score-btn" data-action="decrement">-</button>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card" data-team="team6">
+                        <h4>France Alzheimer Hérault</h4>
+                        <div class="score-input">
+                            <input type="number" min="0" value="0" class="score-field">
+                            <button class="score-btn" data-action="increment">+</button>
+                            <button class="score-btn" data-action="decrement">-</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Overlay -->
+            <section id="overlay-section" class="content-section">
+                <div class="overlay-info">
+                    <h2>📺 Informations Overlay</h2>
+                    <p>L'overlay est accessible à l'adresse : <strong>/overlay</strong></p>
+                    <p>Les scores sont accessibles à l'adresse : <strong>/scores</strong></p>
+                    <div class="overlay-links">
+                        <a href="/overlay" target="_blank" class="btn primary">Ouvrir Overlay</a>
+                        <a href="/scores" target="_blank" class="btn secondary">Ouvrir Scores</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="admin-footer">
+            <p>🚀 Hobbymood Admin Panel - Version PythonAnywhere</p>
+            <p>Utilise du polling au lieu des WebSockets</p>
+        </footer>
+    </div>
+
+    <script src="/js/admin_pythonanywhere.js"></script>
+</body>
+</html> 

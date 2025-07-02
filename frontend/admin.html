@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbymood Admin - Contrôle OBS</title>
+    <link rel="stylesheet" href="/frontend/css/admin.css">
+</head>
+<body>
+    <div id="admin-container">
+        <!-- Header -->
+        <header id="admin-header">
+            <h1>🎮 Hobbymood OBS Controller</h1>
+            <div id="connection-status">
+                <span id="status-indicator" class="status-disconnected"></span>
+                <span id="status-text">Déconnecté</span>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav id="admin-nav">
+            <button class="nav-btn active" data-section="games">Jeux</button>
+            <button class="nav-btn" data-section="scores">Scores</button>
+            <button class="nav-btn" data-section="overlay">Overlay</button>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main id="admin-content">
+            <!-- Section Jeux -->
+            <section id="games-section" class="content-section active">
+                <div class="games-header">
+                    <h2>🎮 Gestion des Jeux</h2>
+                    <div class="header-controls">
+                        <button class="control-btn danger" id="clear-all">
+                            🗑️ Effacer Tout
+                        </button>
+                        <button class="control-btn warning" id="clear-question-answer">
+                            Effacer Q/R
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="games-grid">
+                    <!-- Jeu 1 -->
+                    <div class="game-card" data-game="jeu1">
+                        <div class="game-header">
+                            <h3>🏆 Mon entreprise en or</h3>
+                            <span class="game-subtitle">8 questions</span>
+                        </div>
+                        
+                        <div class="game-controls">
+                            <div class="control-group">
+                                <h4>Assets principaux</h4>
+                                <button class="control-btn" data-action="show_logo" data-game="jeu1" id="jeu1-logo-btn">
+                                    Afficher Logo
+                                </button>
+                                <button class="control-btn" data-action="show_presentation" data-game="jeu1" id="jeu1-presentation-btn">
+                                    Afficher Présentation
+                                </button>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Questions</h4>
+                                <div class="questions-grid" id="jeu1-questions">
+                                    <!-- Les questions seront générées dynamiquement -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jeu 2 -->
+                    <div class="game-card" data-game="jeu2">
+                        <div class="game-header">
+                            <h3>🌱 Les défis du père fou de la RSE</h3>
+                            <span class="game-subtitle">9 questions</span>
+                        </div>
+                        
+                        <div class="game-controls">
+                            <div class="control-group">
+                                <h4>Assets principaux</h4>
+                                <button class="control-btn" data-action="show_logo" data-game="jeu2" id="jeu2-logo-btn">
+                                    Afficher Logo
+                                </button>
+                                <button class="control-btn" data-action="show_presentation" data-game="jeu2" id="jeu2-presentation-btn">
+                                    Afficher Présentation
+                                </button>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Questions</h4>
+                                <div class="questions-grid" id="jeu2-questions">
+                                    <!-- Les questions seront générées dynamiquement -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jeu 3 -->
+                    <div class="game-card" data-game="jeu3">
+                        <div class="game-header">
+                            <h3>💰 Qui veut gagner des millions d'impacts</h3>
+                            <span class="game-subtitle">10 questions</span>
+                        </div>
+                        
+                        <div class="game-controls">
+                            <div class="control-group">
+                                <h4>Assets principaux</h4>
+                                <button class="control-btn" data-action="show_logo" data-game="jeu3" id="jeu3-logo-btn">
+                                    Afficher Logo
+                                </button>
+                                <button class="control-btn" data-action="show_presentation" data-game="jeu3" id="jeu3-presentation-btn">
+                                    Afficher Présentation
+                                </button>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Questions</h4>
+                                <div class="questions-grid" id="jeu3-questions">
+                                    <!-- Les questions seront générées dynamiquement -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Scores -->
+            <section id="scores-section" class="content-section">
+                <div class="scores-container">
+                    <div class="scores-header">
+                        <h2>📊 Gestion des Scores</h2>
+                        <div class="scores-controls">
+                            <button class="control-btn danger" id="reset-points">
+                                🔄 Reset Points
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="teams-grid">
+                        <div class="team-card" data-team="team1">
+                            <h4>École de la 2nd chance Nîmes</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field">
+                                <button class="score-btn" data-action="increment">+</button>
+                                <button class="score-btn" data-action="decrement">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team2">
+                            <h4>Les Roses du Gard</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field">
+                                <button class="score-btn" data-action="increment">+</button>
+                                <button class="score-btn" data-action="decrement">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team3">
+                            <h4>À Vélo Sans Âge</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field">
+                                <button class="score-btn" data-action="increment">+</button>
+                                <button class="score-btn" data-action="decrement">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team4">
+                            <h4>Cancertons-nous</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field">
+                                <button class="score-btn" data-action="increment">+</button>
+                                <button class="score-btn" data-action="decrement">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team5">
+                            <h4>Charlotte Memory</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field">
+                                <button class="score-btn" data-action="increment">+</button>
+                                <button class="score-btn" data-action="decrement">-</button>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card" data-team="team6">
+                            <h4>France Alzheimer Hérault</h4>
+                            <div class="score-input">
+                                <input type="number" min="0" value="0" class="score-field">
+                                <button class="score-btn" data-action="increment">+</button>
+                                <button class="score-btn" data-action="decrement">-</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Overlay -->
+            <section id="overlay-section" class="content-section">
+                <div class="overlay-container">
+                    <div class="overlay-header">
+                        <h2>🎬 Contrôle Overlay</h2>
+                    </div>
+                    
+                    <div class="overlay-controls">
+                        <div class="control-group">
+                            <h4>Actions rapides</h4>
+                            <button class="control-btn warning" id="clear-question">
+                                Effacer Question
+                            </button>
+                            <button class="control-btn warning" id="clear-answer">
+                                Effacer Réponse
+                            </button>
+                        </div>
+                        
+                        <div class="control-group">
+                            <h4>Liens OBS</h4>
+                            <div class="obs-links">
+                                <a href="/overlay" target="_blank" class="obs-link">
+                                    📺 Overlay Principal
+                                </a>
+                                <a href="/scores" target="_blank" class="obs-link">
+                                    📊 Page Scores
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/frontend/js/admin.js"></script>
+</body>
+</html> 

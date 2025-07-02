@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbymood Scores</title>
+    <link rel="stylesheet" href="/frontend/css/scores.css">
+</head>
+<body>
+    <div id="scores-container">
+        <div id="scores-background">
+            <!-- Image de fond des scores -->
+            <img id="scores-base" src="/assets/scores/base.png" alt="Scores Background">
+        </div>
+        
+        <div id="scores-overlay">
+            <!-- Les scores seront affichés ici dynamiquement -->
+        </div>
+        
+
+        
+        <!-- Indicateur de statut (optionnel, pour debug) -->
+        <div id="status-indicator" class="status-hidden">
+            <span id="connection-status">Déconnecté</span>
+        </div>
+    </div>
+
+    <script src="/frontend/js/scores.js"></script>
+</body>
+</html> 
