@@ -178,12 +178,6 @@ class OverlayController {
         img.className = `asset-image asset-${asset_type} fade-in`;
         img.dataset.assetType = asset_type;
         
-        // Pas d'animation spéciale pour les réponses - affichage simple
-        if (asset_type === 'answer') {
-            // Utiliser seulement l'animation fade-in standard
-            console.log(`Affichage réponse simple avec fade-in`);
-        }
-        
         img.onload = () => {
             console.log(`Asset chargé: ${asset_path} (${asset_type})`);
         };
@@ -196,13 +190,17 @@ class OverlayController {
         assetDisplay.appendChild(img);
         this.activeAssets[asset_type] = img;
 
-        // Retirer la classe si elle existe déjà
+        // Forcer l'animation fade-in
         img.classList.remove('fade-in');
-
-        // Utiliser requestAnimationFrame pour garantir l'ajout au DOM avant d'ajouter la classe
         requestAnimationFrame(() => {
             img.classList.add('fade-in');
         });
+
+        // Log pour vérifier le nombre de questions dans le DOM
+        if (asset_type === 'question') {
+            const allQuestions = assetDisplay.querySelectorAll('.asset-question');
+            console.log('Questions dans le DOM :', allQuestions.length);
+        }
     }
 
     createAndDisplayAssetImmediate(asset_path, asset_type) {
@@ -282,45 +280,23 @@ class OverlayController {
 
     clearAssetType(assetType) {
         const asset = this.activeAssets[assetType];
-        if (asset) {
-            console.log(`Effacement asset: ${assetType}`);
-            
-            // Marquer l'asset comme en cours de suppression
-            asset.classList.remove('fade-in');
-            asset.classList.add('fade-out');
-            
-            // Supprimer immédiatement de la liste des assets actifs
-            this.activeAssets[assetType] = null;
-            
-            // Supprimer du DOM après l'animation
-            setTimeout(() => {
-                if (asset && asset.parentNode) {
-                    asset.parentNode.removeChild(asset);
-                    console.log(`Asset ${assetType} supprimé du DOM`);
-                }
-            }, 300);
-        } else {
-            console.log(`Aucun asset ${assetType} à effacer`);
-        }
-        
-        // Nettoyer aussi tous les éléments du DOM avec le même assetType
         const assetDisplay = document.getElementById('asset-display');
+        // Supprimer tous les éléments du DOM pour ce type
         if (assetDisplay) {
-            const existingAssets = assetDisplay.querySelectorAll(`[data-asset-type="${assetType}"]`);
-            existingAssets.forEach(existingAsset => {
-                if (existingAsset !== asset) { // Éviter de supprimer l'asset déjà géré
-                    console.log(`Suppression asset ${assetType} orphelin du DOM`);
-                    existingAsset.classList.remove('fade-in');
-                    existingAsset.classList.add('fade-out');
-                    
-                    setTimeout(() => {
-                        if (existingAsset && existingAsset.parentNode) {
-                            existingAsset.parentNode.removeChild(existingAsset);
-                        }
-                    }, 300);
-                }
+            const allAssets = assetDisplay.querySelectorAll(`.asset-${assetType}`);
+            allAssets.forEach(el => {
+                el.classList.add('fade-out-quick');
+                setTimeout(() => {
+                    if (el.parentNode) el.parentNode.removeChild(el);
+                }, 150);
             });
+            // Log pour vérifier le nombre d'éléments restants
+            setTimeout(() => {
+                const count = assetDisplay.querySelectorAll(`.asset-${assetType}`).length;
+                console.log(`Éléments .asset-${assetType} restants dans le DOM :`, count);
+            }, 200);
         }
+        this.activeAssets[assetType] = null;
     }
 
     clearAssetTypeImmediate(assetType) {
